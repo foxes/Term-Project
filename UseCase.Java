@@ -5,7 +5,7 @@ public class UseCase {
 	private String ID;
 	private String Description;
 	private String Actors; // we could split this up into two different things
-							// primary and supporting?
+							// primary and supporting?--->I agree(Michael)
 	private String Triggers;
 	private String Preconditions;
 	private String Primaryflow;
