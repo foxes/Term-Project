@@ -1,62 +1,73 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class UseCase {
 	// Just a basic Idea so far.
-	private String Name;
-	private String ID;
-	private String Description;
-	private String Actors; // we could split this up into two different things
-							// primary and supporting?--->I agree(Michael)
-	private String Triggers;
-	private String Preconditions;
-	private String Primaryflow;
-	private String Alternativeflow;
-	private String MinimalGuaruntees;
-	private String SuccessGuaruntees;
+	protected String Name;
+	protected String ID;
+	protected String Description;
+	protected String primaryActors; 		//Separated actors into primary
+	protected String supportingActors;	//and supporting actors		
+	protected String Triggers;
+	protected String Preconditions;
+	protected String Primaryflow;
+	protected String Alternateflow;
+	protected String MinimalGuarantees;
+	protected String SuccessGuarantees;
 
-	public void setName(String n) {
-		Name = n;
+	public void setName(String name) {
+		this.Name = name;
 	}
 
-	public void setID(String n) {
-		ID = n;
+	public void setID(String ID) {
+		this.ID = ID;
 	}
 
-	public void setDescription(String n) {
-		Description = n;
+	public void setDescription(String description) {
+		this.Description = description;
 	}
 
-	public void setActors(String n) {
-		Actors = n;
+	public void setPrimaryActors(String primaryActor) {
+		this.primaryActors = primaryActor;
+	}
+	
+	public void setSupportingActors(String supportingActor){
+		this.supportingActors = supportingActor;
 	}
 
-	public void setTriggers(String n) {
-		Triggers = n;
+	public void setTriggers(String triggers) {
+		this.Triggers = triggers;
 	}
 
-	public void setPreconditions(String n) {
-		Preconditions = n;
+	public void setPreconditions(String preconditions) {
+		this.Preconditions = preconditions;
 	}
 
-	public void setPrimaryflow(String n) {
-		Primaryflow = n;
+	public void setPrimaryflow(String primaryFlow) {
+		this.Primaryflow = primaryFlow;
 	}
 
-	public void setAlternativeflow(String n) {
-		Alternativeflow = n;
+	public void setAlternativeflow(String alternativeFlow) {
+		this.Alternateflow = alternativeFlow;
 	}
 
-	public void setMinimalGuaruntees(String n) {
-		MinimalGuaruntees = n;
+	public void setMinimalGuarantees(String minimalGuarantee) {
+		this.MinimalGuarantees = minimalGuarantee;
 	}
 
-	public void setSuccessGuaruntees(String n) {
-		SuccessGuaruntees = n;
+	public void setSuccessGuarantees(String successGuarantee) {
+		this.SuccessGuarantees = successGuarantee;
 	}
+	
 	public String getName() {
 		return Name;
 	}
 
-	public String getID(String n) {
+	public String getID() {
 		return ID;
 	}
 
@@ -64,8 +75,12 @@ public class UseCase {
 		return Description;
 	}
 
-	public String getActors() {
-		return Actors;
+	public String getPrimaryActors() {
+		return primaryActors;
+	}
+	
+	public String getSupportingActors(){
+		return supportingActors;
 	}
 
 	public String getTriggers() {
@@ -81,15 +96,64 @@ public class UseCase {
 	}
 
 	public String getAlternativeflow() {
-		return Alternativeflow;
+		return Alternateflow;
 	}
 
 	public String getMinimalGuaruntees() {
-		return MinimalGuaruntees;
+		return MinimalGuarantees;
 	}
 
 	public String getSuccessGuaruntees() {
-		return SuccessGuaruntees;
+		return SuccessGuarantees;
+	}
+	
+	public boolean saveAsText(String filename){
+		if (filename.equals("")) {
+			return false;
+		}
+		
+		try {
+			PrintWriter out = new PrintWriter(new BufferedWriter(
+					new FileWriter(filename)));
+			out.println("" + this.getName());
+			out.println("" + this.getID());
+			out.println("" + this.getDescription());
+			out.println("" + this.getPrimaryActors());
+			out.println("" + this.getSupportingActors());
+			out.println("" + this.getTriggers());
+			out.println("" + this.getPreconditions());
+			out.println("" + this.getPrimaryflow());
+			out.println("" + this.getAlternativeflow());
+			out.println("" + this.getMinimalGuaruntees());
+			out.println("" + this.getSuccessGuaruntees());
+			out.close();
+			
+			return true;
+			
+		}catch (IOException ex) {
+			return false;
+		}
 	}
 
+	public void loadFromText(String filename){
+		try {
+			Scanner scanner = new Scanner(new File(filename));
+			
+			Name = scanner.nextLine().trim();
+			ID = scanner.nextLine().trim();
+			Description = scanner.nextLine().trim();
+			primaryActors = scanner.nextLine().trim();
+			supportingActors = scanner.nextLine().trim();
+			Triggers = scanner.nextLine().trim();
+			Preconditions = scanner.nextLine().trim();
+			Primaryflow = scanner.nextLine().trim();
+			Alternateflow = scanner.nextLine().trim();
+			MinimalGuarantees = scanner.nextLine().trim();
+			SuccessGuarantees = scanner.nextLine().trim();
+			scanner.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 }
