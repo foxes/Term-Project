@@ -12,6 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
+//This is a bax that pops up when the create button is hit in the GUI (I had to update the GUI and UseCase classes)
 
 public class UseCaseEditor extends JDialog implements ActionListener{
 
