@@ -18,6 +18,21 @@ public class UseCase {
 	protected String Alternateflow;
 	protected String MinimalGuarantees;
 	protected String SuccessGuarantees;
+	
+	public UseCase(){
+		Name = "a";
+		ID = "b";
+		Description = "c";
+		primaryActors ="d";
+		supportingActors = "e";
+		Triggers = "f";
+		Preconditions = "g";
+		Primaryflow = "h";
+		Alternateflow = "i";
+		MinimalGuarantees = "j";
+		SuccessGuarantees = "k";
+		
+	}
 
 	public void setName(String name) {
 		this.Name = name;
@@ -103,9 +118,10 @@ public class UseCase {
 		return MinimalGuarantees;
 	}
 
-	public String getSuccessGuaruntees() {
+	public String getSuccessGuarantees() {
 		return SuccessGuarantees;
 	}
+	
 	
 	public boolean saveAsText(String filename){
 		if (filename.equals("")) {
@@ -125,7 +141,7 @@ public class UseCase {
 			out.println("" + this.getPrimaryflow());
 			out.println("" + this.getAlternativeflow());
 			out.println("" + this.getMinimalGuaruntees());
-			out.println("" + this.getSuccessGuaruntees());
+			out.println("" + this.getSuccessGuarantees());
 			out.close();
 			
 			return true;
@@ -155,5 +171,6 @@ public class UseCase {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+
 	}
 }
