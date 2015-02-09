@@ -12,7 +12,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
-//This is a bax that pops up when the create button is hit in the GUI (I had to update the GUI and UseCase classes)
 
 public class UseCaseEditor extends JDialog implements ActionListener{
 
@@ -37,7 +36,7 @@ public class UseCaseEditor extends JDialog implements ActionListener{
 	public static final int OK = 0;
 	public static final int CANCEL = 1;
 	
-	private UseCase uc;
+	private UseCase uc = new UseCase();
 	
 	public UseCaseEditor(){
 		setTitle("Use Case Editor");
