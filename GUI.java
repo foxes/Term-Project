@@ -11,6 +11,7 @@ public class GUI extends JFrame implements ActionListener{
 	private JButton load;
 	
 	public static void main(String[] args){
+		UseCase uc = new UseCase();
 		EventQueue.invokeLater(new Runnable(){
 			public void run(){
 				try{
@@ -68,74 +69,79 @@ public class GUI extends JFrame implements ActionListener{
 		JLabel name = new JLabel();
 		panel.add(name);
 		
-		JTextPane textPane1 = new JTextPane();
-		JScrollPane sp1 = new JScrollPane(textPane1);
-		panel.add(sp1);
+		JLabel name_input = new JLabel("Name");
+		panel.add(name_input);
 		
 		JLabel ID = new JLabel();
 		panel.add(ID);
 		
-		JTextPane textPane2 = new JTextPane();
-		JScrollPane sp2 = new JScrollPane(textPane2);
-		sp2.setToolTipText("This is helpful text");
-		panel.add(sp2);
+		JLabel ID_input = new JLabel("Id");
+		panel.add(ID_input);
 		
 		JLabel description = new JLabel();
 		panel.add(description);
-		
-		JTextPane textPane3 = new JTextPane();
-		JScrollPane sp3 = new JScrollPane(textPane3);
+		JScrollPane sp3 = new JScrollPane();
 		panel.add(sp3);
+		
+		JLabel description_input = new JLabel("description");
+		sp3.setViewportView(description_input);
 		
 		JLabel prim_actors = new JLabel("Primary Actors");
 		panel.add(prim_actors);
-		
-		JTextPane textPane4 = new JTextPane();
-		JScrollPane sp4 = new JScrollPane(textPane4);
+		JScrollPane sp4 = new JScrollPane();
 		panel.add(sp4);
+		
+		JLabel prim_actors_input = new JLabel("prim_actors");
+		sp4.setViewportView(prim_actors_input);
 		
 		JLabel triggers = new JLabel("Triggers");
 		panel.add(triggers);
-		
-		JTextPane textPane5 = new JTextPane();
-		JScrollPane sp5 = new JScrollPane(textPane5);
+		JScrollPane sp5 = new JScrollPane();
 		sp5.setToolTipText("");
 		panel.add(sp5);
 		
+		JLabel triggers_input = new JLabel("triggers");
+		sp5.setViewportView(triggers_input);
+		
 		JLabel preconditions = new JLabel("Precondidtions");
 		panel.add(preconditions);
-		
-		JTextPane textPane6 = new JTextPane();
-		JScrollPane sp6 = new JScrollPane(textPane6);
+		JScrollPane sp6 = new JScrollPane();
 		panel.add(sp6);
+		
+		JLabel preconditions_input = new JLabel("preconditions");
+		sp6.setViewportView(preconditions_input);
 		
 		JLabel primaryFlow	= new JLabel("Primary Flow");
 		panel.add(primaryFlow);
-		
-		JTextPane textPane7 = new JTextPane();
-		JScrollPane sp7 = new JScrollPane(textPane7);
+		JScrollPane sp7 = new JScrollPane();
 		panel.add(sp7);
+		
+		JLabel primaryFlow_input = new JLabel("primaryFlow");
+		sp7.setViewportView(primaryFlow_input);
 		
 		JLabel alternativeFlow = new JLabel("Alternative Flow");
 		panel.add(alternativeFlow);
-		
-		JTextPane textPane8 = new JTextPane();
-		JScrollPane sp8 = new JScrollPane(textPane8);
+		JScrollPane sp8 = new JScrollPane();
 		panel.add(sp8);
+		
+		JLabel alternativeFlow_input = new JLabel("alternativeFlow");
+		sp8.setViewportView(alternativeFlow_input);
 		
 		JLabel minimal = new JLabel("Minimual Guarentees");
 		panel.add(minimal);
-		
-		JTextPane textPane9 = new JTextPane();
-		JScrollPane sp9 = new JScrollPane(textPane9);
+		JScrollPane sp9 = new JScrollPane();
 		panel.add(sp9);
+		
+		JLabel minimal_input = new JLabel("Minimal");
+		sp9.setViewportView(minimal_input);
 		
 		JLabel success = new JLabel("Success Guearentees");
 		panel.add(success);
-		
-		JTextPane textPane10 = new JTextPane();
-		JScrollPane sp10 = new JScrollPane(textPane10);
+		JScrollPane sp10 = new JScrollPane();
 		panel.add(sp10);
+		
+		JLabel success_input = new JLabel("Success");
+		sp10.setViewportView(success_input);
 		
 	}
 	
