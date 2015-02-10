@@ -15,3 +15,5 @@ so on click of save runs save method in gui, changed a few other things around
 
 Note i really need to start commenting code...
 Any issues with any of my code email me any time tommorow and should get back pretty quick
+
+I am gonna work on the Project around 8ish pm tommorrow Ill start with trying to get the project jtree/layout up.
