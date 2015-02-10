@@ -37,7 +37,7 @@ public class UseCase {
 	public void setName(String name) {
 		this.Name = name;
 	}
-
+	
 	public void setID(String ID) {
 		this.ID = ID;
 	}
@@ -81,7 +81,6 @@ public class UseCase {
 	public String getName() {
 		return Name;
 	}
-
 	public String getID() {
 		return ID;
 	}
@@ -131,6 +130,7 @@ public class UseCase {
 		try {
 			PrintWriter out = new PrintWriter(new BufferedWriter(
 					new FileWriter(filename)));
+			
 			out.println("" + this.getName());
 			out.println("" + this.getID());
 			out.println("" + this.getDescription());
