@@ -1,14 +1,17 @@
 import java.util.*;
 
 public class project {
-	private ArrayList<UseCase> Usecases;
-	public project(){
-	Usecases = new ArrayList<UseCase>();
+	private HashMap<String,UseCase> Usecases;
+
+	public project() {
+		Usecases = new HashMap<String,UseCase>();
 	}
+
 	public void addUsecase(UseCase uc) {
-		Usecases.add(uc);
+		Usecases.put(uc.getID(),uc);
 	}
-	public UseCase GetUsecase(int i) {
-		return Usecases.get(i);
+	
+	public UseCase GetUsecase(String id) {
+		return Usecases.get(id);
 	}
 }
