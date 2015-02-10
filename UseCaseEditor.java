@@ -7,9 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
 
@@ -31,13 +29,28 @@ public class UseCaseEditor extends JDialog implements ActionListener{
 	private JButton okButton;
 	private JButton cancelButton;
 	
-	private int closeStatus;
+	private int closeStatus = 0;
 	
 	public static final int OK = 0;
 	public static final int CANCEL = 1;
 	
 	private UseCase uc = new UseCase();
-	
+	public UseCase getUC() {
+		uc.setName(nameTxt.getText());
+		uc.setID(IDTxt.getText());
+		uc.setDescription(descriptionTxt.getText());
+		uc.setPrimaryActors(primaryActorTxt.getText());
+		uc.setSupportingActors(supportingActorTxt.getText());
+		uc.setTriggers(triggersTxt.getText());
+		uc.setPreconditions(preconditionsTxt.getText());
+		uc.setAlternativeflow(alternateFlowTxt.getText());
+		uc.setMinimalGuarantees(minimalGuaranteeTxt.getText());
+		uc.setSuccessGuarantees(successGuaranteeTxt.getText());
+		return uc;
+	}
+	public int getclosestatus() {
+		return closeStatus;
+	}
 	public UseCaseEditor(){
 		setTitle("Use Case Editor");
 		closeStatus = CANCEL;
@@ -104,7 +117,7 @@ public class UseCaseEditor extends JDialog implements ActionListener{
 		
 		getContentPane().add(textPanel, BorderLayout.CENTER);
 		
-		okButton = new JButton("OK");
+		okButton = new JButton("Save");
 		cancelButton = new JButton("Cancel");
 		textPanel.add(okButton);
 		textPanel.add(cancelButton);
@@ -118,7 +131,9 @@ public class UseCaseEditor extends JDialog implements ActionListener{
 		setSize(800,700);
 		setVisible (true);	
 	}
-	
+	public void addSaveListener(ActionListener listener) {
+		  okButton.addActionListener(listener);
+	}
 	public void actionPerformed(ActionEvent e){
 		
 		//Didn't get this to work yet
@@ -126,18 +141,6 @@ public class UseCaseEditor extends JDialog implements ActionListener{
 			closeStatus = OK;
 			
 			try{
-				
-				uc.setName(nameTxt.getText());
-				uc.setID(IDTxt.getText());
-				uc.setDescription(descriptionTxt.getText());
-				uc.setPrimaryActors(primaryActorTxt.getText());
-				uc.setSupportingActors(supportingActorTxt.getText());
-				uc.setTriggers(triggersTxt.getText());
-				uc.setPreconditions(preconditionsTxt.getText());
-				uc.setAlternativeflow(alternateFlowTxt.getText());
-				uc.setMinimalGuarantees(minimalGuaranteeTxt.getText());
-				uc.setSuccessGuarantees(successGuaranteeTxt.getText());
-				
 				dispose();
 			}catch(Exception e1){
 				closeStatus = CANCEL;
