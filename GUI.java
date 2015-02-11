@@ -8,10 +8,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
-import javax.swing.border.CompoundBorder;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 
@@ -111,8 +108,6 @@ public class GUI extends JFrame implements ActionListener{
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		
-		
 
 		
 		ID_input = new JLabel("Id");
@@ -126,8 +121,6 @@ public class GUI extends JFrame implements ActionListener{
 		ID = new JLabel("ID");
 		ID.setBounds(10, 290, 143, 20);
 		panel.add(ID);
-
-
 		
 		JLabel description = new JLabel();
 		description = new JLabel("Description");
@@ -203,34 +196,32 @@ public class GUI extends JFrame implements ActionListener{
 		tree = new JTree();
 		tree.setModel(new DefaultTreeModel(
 			new DefaultMutableTreeNode("Test Tree") {
-				{
-					DefaultMutableTreeNode node_1;
-					node_1 = new DefaultMutableTreeNode("Aliens ");
-						node_1.add(new DefaultMutableTreeNode("blue"));
-						node_1.add(new DefaultMutableTreeNode("violet"));
-						node_1.add(new DefaultMutableTreeNode("red"));
-						node_1.add(new DefaultMutableTreeNode("yellow"));
-					add(node_1);
-					node_1 = new DefaultMutableTreeNode("Kanye West");
-						node_1.add(new DefaultMutableTreeNode("basketball"));
-						node_1.add(new DefaultMutableTreeNode("soccer"));
-						node_1.add(new DefaultMutableTreeNode("football"));
-						node_1.add(new DefaultMutableTreeNode("hockey"));
-					add(node_1);
-					node_1 = new DefaultMutableTreeNode("Spooky skeletons");
-						node_1.add(new DefaultMutableTreeNode("hot dogs"));
-						node_1.add(new DefaultMutableTreeNode("pizza"));
-						node_1.add(new DefaultMutableTreeNode("ravioli"));
-						node_1.add(new DefaultMutableTreeNode("bananas"));
-					add(node_1);
+			{
+			DefaultMutableTreeNode node_1;
+			node_1 = new DefaultMutableTreeNode("Aliens ");
+			node_1.add(new DefaultMutableTreeNode("blue"));
+			node_1.add(new DefaultMutableTreeNode("violet"));
+			node_1.add(new DefaultMutableTreeNode("red"));
+			node_1.add(new DefaultMutableTreeNode("yellow"));
+			add(node_1);
+			node_1 = new DefaultMutableTreeNode("Kanye West");
+			node_1.add(new DefaultMutableTreeNode("basketball"));
+			node_1.add(new DefaultMutableTreeNode("soccer"));
+			node_1.add(new DefaultMutableTreeNode("football"));
+			node_1.add(new DefaultMutableTreeNode("hockey"));
+			add(node_1);
+			node_1 = new DefaultMutableTreeNode("Spooky skeletons");
+			node_1.add(new DefaultMutableTreeNode("hot dogs"));
+			node_1.add(new DefaultMutableTreeNode("pizza"));
+			node_1.add(new DefaultMutableTreeNode("ravioli"));
+			node_1.add(new DefaultMutableTreeNode("bananas"));
+			add(node_1);
 				}
 			}
 		));
 		tree.setBackground(Color.WHITE);
 		tree.setBounds(0, 0, 144, 358);
-		getContentPane().add(tree);
-		
-																		alternativeFlow_input.setBounds(305, 137, 141, 18);
+		getContentPane().add(tree);																		alternativeFlow_input.setBounds(305, 137, 141, 18);
 
 		
 	}
@@ -251,9 +242,7 @@ public class GUI extends JFrame implements ActionListener{
 	public static void main (String[] args) {
 		
 		new GUI();	
-	}
-	
-	
+	}		
 	
 	public void save(UseCase uc) {
 		//save into jlabels
