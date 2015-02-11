@@ -1,61 +1,229 @@
+package UseCaseEditor;
+
+//import UseCaseEditor;
+
+
+
+import java.awt.event.*;
+
 import javax.swing.*;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.border.CompoundBorder;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.DefaultMutableTreeNode;
 
-public class GUI extends JFrame implements ActionListener {
-	private JFrame frame;
 
-	// Buttons
-	private JButton create, save, edit, load;
+/*****************************************************************
 
-	// Different panels
-	private JPanel panel, panel2, panel_2;
+@author 
+@version 
+*****************************************************************/
+public class GUI extends JFrame implements ActionListener{
+	private JMenuBar menus;
+	private JMenu fileMenu;
+	private JMenu actionMenu;
+	
+	// fileMenu
+	private JMenuItem openItem;
+	private JMenuItem exitItem;
+	private JMenuItem saveItem;
+	
+	// account Menu
+	private JMenuItem AddUseCase;
+	private JMenuItem editUseCase;
+	private JMenuItem helpUseCase;
+	
+	private UseCaseEditor UCE;	
 
-	// menu
-	private JToolBar toolBar;
-	// Input Labels for user View
-	private JLabel success_input, minimal_input, alternativeFlow_input,
-			primaryFlow_input;
-	private JLabel preconditions_input, triggers_input, prim_actors_input,
-			description_input;
-	private JLabel ID_input, name_input;
-
-	// Respective scroll panes not implemented yet
-	private JScrollPane success_Scroll, minimal_Scroll, alternativeFlow_Scroll,
-			primaryFlow_Scroll;
-	private JScrollPane preconditions_Scroll, triggers_Scroll,
-			prim_actors_Scroll, description_Scroll;
-
-	// Current Project for keeping trak of things
-	private Project CurrentProject = new Project();
-
-	// Instance Of the editor for uses cases
-	private UseCaseEditor UCE;
 
 	// keep Track of Currently viewed Usecase
 	private UseCase CurrentUseCase;
+	
+	private Project CurrentProject = new Project();
+	
+	
+	private JLabel success_input, minimal_input, alternativeFlow_input,
+	primaryFlow_input, Name, ID;
+	private JLabel preconditions_input, triggers_input, prim_actors_input,
+	description_input;
+	private JLabel ID_input, name_input;
+	
+	private JTextArea area;
+	final JFileChooser fc = new JFileChooser();	
+	private JTree tree;
+	private JLabel lblNewLabel;
 
-	public static void main(String[] args) {
 
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GUI window = new GUI();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	public GUI() {
-		initialize();
-	}
+		getContentPane().setBackground(Color.WHITE);
+		setTitle("Usecase Generator 2015 #420blazeit #legalize crystal weed");		
 
-	//made this method to save the usecase from editor
+		/** File menu */
+		fileMenu = new JMenu("File");
+		openItem = new JMenuItem("Open");
+		exitItem = new JMenuItem("Exit");
+		saveItem = new JMenuItem("Save");
+		
+		fileMenu.add(openItem);
+		fileMenu.add(saveItem);
+		fileMenu.add(exitItem);
+		
+		saveItem.addActionListener(this);
+		openItem.addActionListener(this);
+		exitItem.addActionListener(this);
+
+		/** action menu */
+		actionMenu = new JMenu ("Action");
+		AddUseCase = new JMenuItem("New Usecase");
+		editUseCase = new JMenuItem("Edit");		
+		helpUseCase = new JMenuItem("Help");
+		
+		actionMenu.add(AddUseCase);
+		actionMenu.add(editUseCase);
+		actionMenu.add(helpUseCase);
+		
+		AddUseCase.addActionListener(this);
+		editUseCase.addActionListener(this);
+		helpUseCase.addActionListener(this);
+
+		/** Menu bar */
+		menus = new JMenuBar();		
+		menus.add(fileMenu); 
+		menus.add(actionMenu);		
+		setJMenuBar(menus);				
+
+		setLocationRelativeTo(null);
+		
+		setVisible(true);
+		setSize(835,418);
+		getContentPane().setLayout(null);
+		
+		tree = new JTree();
+		tree.setModel(new DefaultTreeModel(
+			new DefaultMutableTreeNode("Test Tree") {
+				{
+					DefaultMutableTreeNode node_1;
+					node_1 = new DefaultMutableTreeNode("Aliens ");
+						node_1.add(new DefaultMutableTreeNode("blue"));
+						node_1.add(new DefaultMutableTreeNode("violet"));
+						node_1.add(new DefaultMutableTreeNode("red"));
+						node_1.add(new DefaultMutableTreeNode("yellow"));
+					add(node_1);
+					node_1 = new DefaultMutableTreeNode("Kanye West");
+						node_1.add(new DefaultMutableTreeNode("basketball"));
+						node_1.add(new DefaultMutableTreeNode("soccer"));
+						node_1.add(new DefaultMutableTreeNode("football"));
+						node_1.add(new DefaultMutableTreeNode("hockey"));
+					add(node_1);
+					node_1 = new DefaultMutableTreeNode("Spooky skeletons");
+						node_1.add(new DefaultMutableTreeNode("hot dogs"));
+						node_1.add(new DefaultMutableTreeNode("pizza"));
+						node_1.add(new DefaultMutableTreeNode("ravioli"));
+						node_1.add(new DefaultMutableTreeNode("bananas"));
+					add(node_1);
+				}
+			}
+		));
+		tree.setBackground(Color.WHITE);
+		tree.setBounds(0, 0, 144, 358);
+		getContentPane().add(tree);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.setBounds(143, 11, 611, 336);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		ID_input = new JLabel("Id");
+		ID_input.setBounds(303, 290, 143, 20);
+		panel.add(ID_input);
+		
+		Name = new JLabel("Name");
+		Name.setBounds(10, 11, 143, 20);
+		panel.add(Name);
+		
+		ID = new JLabel("ID");
+		ID.setBounds(10, 290, 143, 20);
+		panel.add(ID);
+
+		JLabel description = new JLabel();
+		description = new JLabel("Description");
+		description.setBounds(10, 229, 143, 20);
+		panel.add(description);
+
+		JLabel prim_actors = new JLabel("Primary Actors");
+		prim_actors.setBounds(10, 39, 143, 20);
+		panel.add(prim_actors);
+
+		JLabel triggers = new JLabel("Triggers");
+		triggers.setBounds(10, 105, 143, 20);
+		panel.add(triggers);
+
+		JLabel preconditions = new JLabel("Precondidtions");
+		preconditions.setBounds(10, 260, 143, 20);
+		panel.add(preconditions);
+
+		JLabel primaryFlow = new JLabel("Primary Flow");		
+		primaryFlow.setBounds(10, 74, 143, 20);
+		panel.add(primaryFlow);
+
+		JLabel alternativeFlow = new JLabel("Alternative Flow");
+		panel.add(alternativeFlow);
+		alternativeFlow.setBounds(10, 136, 143, 20);
+
+		JLabel minimal = new JLabel("Minimal Gaurantee");
+		panel.add(minimal);
+		minimal.setBounds(10, 167, 143, 20);
+
+		JLabel success = new JLabel("Success Guarantee");
+		panel.add(success);
+		success.setBounds(10, 198, 143, 20);
+
+		name_input = new JLabel("Name");
+
+		name_input.setBounds(303, 11, 143, 20);
+		panel.add(name_input);
+		
+				success_input = new JLabel("Success Guarantee");
+				panel.add(success_input);
+				success_input.setBounds(305, 199, 141, 18);
+				
+						minimal_input = new JLabel("Minimal Guarantee");
+						panel.add(minimal_input);
+						minimal_input.setBounds(305, 168, 141, 18);
+						
+								description_input = new JLabel("Descrption");
+								panel.add(description_input);
+								description_input.setBounds(303, 230, 141, 18);
+								
+										prim_actors_input = new JLabel("Primary Actors");
+										panel.add(prim_actors_input);
+										prim_actors_input.setBounds(303, 40, 141, 18);
+										
+												triggers_input = new JLabel("Triggers");
+												panel.add(triggers_input);
+												triggers_input.setBounds(305, 106, 141, 18);
+												
+														preconditions_input = new JLabel("Preconditions");
+														panel.add(preconditions_input);
+														preconditions_input.setBounds(303, 261, 141, 18);
+														
+																primaryFlow_input = new JLabel("Primary Flow");
+																panel.add(primaryFlow_input);
+																primaryFlow_input.setBounds(303, 75, 141, 18);
+																
+																		alternativeFlow_input = new JLabel("Alternative Flow");
+																		panel.add(alternativeFlow_input);
+																		alternativeFlow_input.setBounds(305, 137, 141, 18);
+
+		
+	}
+	
 	public void UCE_Utility() {
 		UCE.addSaveListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -65,152 +233,17 @@ public class GUI extends JFrame implements ActionListener {
 			}
 		});
 	}
-
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(200, 200, 900, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		toolBar = new JToolBar();
-		frame.getContentPane().add(toolBar, BorderLayout.NORTH);
-
-		save = new JButton("Save");
-		toolBar.add(save);
-		save.addActionListener(this);
-
-		load = new JButton("Load");
-		toolBar.add(load);
-		load.addActionListener(this);
-
-		create = new JButton("Create");
-		toolBar.add(create);
-		create.addActionListener(this);
-
-		panel2 = new JPanel();
-		frame.getContentPane().add(panel2, BorderLayout.CENTER);
-		GridLayout g1_panel = new GridLayout(3, 4);
-		g1_panel.setVgap(10);
-		g1_panel.setHgap(10);
-		{
-			// Center Create and load buttons
-			panel2.setLayout(g1_panel);
-			JLabel fill1 = new JLabel();
-			panel2.add(fill1);
-			JLabel fill2 = new JLabel();
-			panel2.add(fill2);
-			JLabel fill3 = new JLabel();
-			panel2.add(fill3);
-			JLabel fill4 = new JLabel();
-			panel2.add(fill4);
-			JLabel fill5 = new JLabel();
-			panel2.add(fill5);
-			panel2.add(create);
-			panel2.add(load);
-			JLabel fill6 = new JLabel();
-			panel2.add(fill6);
-			JLabel fill7 = new JLabel();
-			panel2.add(fill7);
-			JLabel fill8 = new JLabel();
-			panel2.add(fill8);
-			JLabel fill9 = new JLabel();
-			panel2.add(fill9);
-			JLabel fill = new JLabel();
-			panel2.add(fill);
-		}
-		{
-			// View of current Usecase
-			panel = new JPanel();
-			panel.setVisible(false);
-
-			JLabel space = new JLabel();
-			panel.add(space);
-
-			name_input = new JLabel("Name");
-			panel.add(name_input);
-
-			JLabel space2 = new JLabel();
-			panel.add(space2);
-
-			ID_input = new JLabel("Id");
-			panel.add(ID_input);
-
-			JLabel description = new JLabel();
-			description = new JLabel("Description");
-			panel.add(description);
-
-			JScrollPane sp3 = new JScrollPane();
-			panel.add(sp3);
-
-			description_input = new JLabel("description");
-			sp3.setViewportView(description_input);
-
-			JLabel prim_actors = new JLabel("Primary Actors");
-			panel.add(prim_actors);
-			JScrollPane sp4 = new JScrollPane();
-			panel.add(sp4);
-
-			prim_actors_input = new JLabel("prim_actors");
-			sp4.setViewportView(prim_actors_input);
-
-			JLabel triggers = new JLabel("Triggers");
-			panel.add(triggers);
-			JScrollPane sp5 = new JScrollPane();
-			sp5.setToolTipText("");
-			panel.add(sp5);
-
-			triggers_input = new JLabel("triggers");
-			sp5.setViewportView(triggers_input);
-
-			JLabel preconditions = new JLabel("Precondidtions");
-			panel.add(preconditions);
-			JScrollPane sp6 = new JScrollPane();
-			panel.add(sp6);
-
-			preconditions_input = new JLabel("preconditions");
-			sp6.setViewportView(preconditions_input);
-
-			JLabel primaryFlow = new JLabel("Primary Flow");
-			panel.add(primaryFlow);
-			JScrollPane sp7 = new JScrollPane();
-			panel.add(sp7);
-
-			primaryFlow_input = new JLabel("primaryFlow");
-			sp7.setViewportView(primaryFlow_input);
-
-			JLabel alternativeFlow = new JLabel("Alternative Flow");
-			panel.add(alternativeFlow);
-			JScrollPane sp8 = new JScrollPane();
-			panel.add(sp8);
-
-			alternativeFlow_input = new JLabel("alternativeFlow");
-			sp8.setViewportView(alternativeFlow_input);
-
-			JLabel minimal = new JLabel("Minimual Guarentees");
-			panel.add(minimal);
-			JScrollPane sp9 = new JScrollPane();
-			panel.add(sp9);
-
-			minimal_input = new JLabel("Minimal");
-			sp9.setViewportView(minimal_input);
-
-			JLabel success = new JLabel("Success Guearentees");
-			panel.add(success);
-			JScrollPane sp10 = new JScrollPane();
-			panel.add(sp10);
-
-			success_input = new JLabel("Success");
-			sp10.setViewportView(success_input);
-		}
-
-		//edit button currently has its own panel
-		panel_2 = new JPanel();
-		frame.getContentPane().add(panel_2, BorderLayout.SOUTH);
-		edit = new JButton("Edit");
-		edit.setVisible(false);
-		panel_2.add(edit);
-		edit.addActionListener(this);
+	
+	/*****************************************************************
+	main method, creates the instance of GUI
+	*****************************************************************/
+	public static void main (String[] args) {
+		
+		new GUI();	
 	}
-
+	
+	
+	
 	public void save(UseCase uc) {
 		//save into jlabels
 		success_input.setText(uc.getSuccessGuarantees());
@@ -231,57 +264,87 @@ public class GUI extends JFrame implements ActionListener {
 		CurrentProject.addUsecase(uc);
 		
 		//make edit visible if already not
-		edit.setVisible(true);
-		display();
+//		edit.setVisible(true);
+//		display();
 	}
-
-	public void display() {
-		// change panels from create/load to usecase view
-		panel.setVisible(true);
-		panel2.setVisible(false);
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		GridLayout g1_panel = new GridLayout(10, 2);
-		g1_panel.setVgap(2);
-		g1_panel.setHgap(2);
-		
-		//change location of create and load.
-		toolBar.add(create);
-		toolBar.add(load);
-		panel.setLayout(g1_panel);
-	}
-
+	
+	/**************************************************************
+	 Manages the action listeners that are currently connected to
+	 GUI objects.
+	 @param e the event
+	 **************************************************************/
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == create) {
-			if (CurrentProject.GetProjectIds().size() < 1) {
+		
+		if (openItem == e.getSource()) {	
 
+			JFileChooser input = new JFileChooser();
+			int result = input.showSaveDialog(this);
+			if (result == JFileChooser.APPROVE_OPTION) {
+			
+			//Retrieves the absolute path of the file that the user selected
+		   	String path = input.getSelectedFile().getAbsolutePath(); 
+
+		   	//loads Usecase using the path retrieved
+//			CurrentProject.saveToXML(path, CurrentUseCase);
+
+			} else if (result == JFileChooser.CANCEL_OPTION) {
+				
+			    System.out.println("Cancel was selected");
 			}
+		}
+		
+		/** exits program when called */
+		if (exitItem == e.getSource()) {		
+			 
+			System.exit(0);
+		}
+		
+
+
+		
+		/** performs save usecase operations using a JFilechooser menu */
+		if (saveItem == e.getSource()) {			
+
+			JFileChooser input = new JFileChooser();
+			int result = input.showSaveDialog(this);
+			if (result == JFileChooser.APPROVE_OPTION) {
+		   	String path = input.getSelectedFile().getAbsolutePath(); 
+
+
+//			CurrentProject.saveToXML(path, CurrentUseCase);	
+//		   	CurrentUseCase.saveAsText(path);
+
+			} else if (result == JFileChooser.CANCEL_OPTION) {
+				
+			    System.out.println("Cancel was selected");
+			}						
+		}
+		
+		/** allows user to create a new usecase, engages UseCaseEditor */
+		if (AddUseCase == e.getSource()) {	
+			
 			UCE = new UseCaseEditor();
 			UCE.setVisible(true);
 			UCE_Utility();
+			
+
+		}	
+
+		/** allows user to edit the current usecase, engages UseCaseEditor */
+		if (editUseCase == e.getSource()) {
+			UCE.setVisible(true);
+									
+		}
+		
+
+		if (helpUseCase == e.getSource()) {
+			
+			JOptionPane.showMessageDialog(null,	
+					"for future usage i guess\n Version 1.0","Version Information",
+					JOptionPane.INFORMATION_MESSAGE);
+			
+		
 		}
 
-		if (e.getSource() == save) {
-			if (CurrentUseCase != null)
-				save(CurrentUseCase);
-		}
-		if (e.getSource() == edit) {
-			UCE.setVisible(true);
-		}
-		if (e.getSource() == load) {
-			UseCase uc = new UseCase();
-			// uc.loadFromText("filename");
-			success_input.setText(uc.getSuccessGuarantees());
-			minimal_input.setText(uc.getMinimalGuaruntees());
-			alternativeFlow_input.setText(uc.getAlternativeflow());
-			primaryFlow_input.setText(uc.getPrimaryflow());
-			preconditions_input.setText(uc.getPreconditions());
-			triggers_input.setText(uc.getTriggers());
-			prim_actors_input.setText(uc.getPrimaryActors());
-			description_input.setText(uc.getDescription());
-			ID_input.setText(uc.getID());
-			name_input.setText(uc.getName());
-			edit.setVisible(true);
-			display();
-		}
 	}
 }
