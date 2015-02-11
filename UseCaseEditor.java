@@ -63,56 +63,67 @@ public class UseCaseEditor extends JDialog implements ActionListener{
 		/**Sets up the textfields with default values**/
 		textPanel.add(new JLabel("Name: "));
 		nameTxt = new JTextPane();
+		nameTxt.setText("Bobby Rosaria");
 		JScrollPane sp = new JScrollPane(nameTxt);
 		textPanel.add(sp);		
 		
 		textPanel.add(new JLabel("ID: "));
 		IDTxt = new JTextPane();
+		IDTxt.setText("182039");
 		sp = new JScrollPane(IDTxt);
 		textPanel.add(sp);
 		
 		textPanel.add(new JLabel("Description: "));
 		descriptionTxt = new JTextPane();
+		descriptionTxt.setText("wrecked his car");
 		sp = new JScrollPane(descriptionTxt);
 		textPanel.add(sp);
 		
 		textPanel.add(new JLabel("Primary Actor: "));
 		primaryActorTxt = new JTextPane();
+		primaryActorTxt.setText("Bob");
 		sp = new JScrollPane(primaryActorTxt);
 		textPanel.add(sp);
 		
 		textPanel.add(new JLabel("Supporting Actor: "));
 		supportingActorTxt = new JTextPane();
+		supportingActorTxt.setText("Janice");
 		sp = new JScrollPane(supportingActorTxt);
 		textPanel.add(sp);
 		
 		textPanel.add(new JLabel("Triggers: "));
 		triggersTxt = new JTextPane();
+		triggersTxt.setText("clicking the stop button");
 		sp = new JScrollPane(triggersTxt);
 		textPanel.add(sp);
 		
 		textPanel.add(new JLabel("Preconditions: "));
 		preconditionsTxt = new JTextPane();
+		preconditionsTxt.setText("program doesnt work");
 		sp = new JScrollPane(preconditionsTxt);
 		textPanel.add(sp);
 		
 		textPanel.add(new JLabel("Primary Flow: "));
 		primaryFlowTxt = new JTextPane();
+		primaryFlowTxt.setText("lack of flow");
 		sp = new JScrollPane(primaryFlowTxt);
 		textPanel.add(sp);
 		
 		textPanel.add(new JLabel("Alternate Flow: "));
 		alternateFlowTxt = new JTextPane();
+		alternateFlowTxt.setText("flow needs to be added");
 		sp = new JScrollPane(alternateFlowTxt);
 		textPanel.add(sp);
 		
 		textPanel.add(new JLabel("Minimal Guarentees"));
 		minimalGuaranteeTxt = new JTextPane();
+		minimalGuaranteeTxt.setText("large amount of flow added");
 		sp = new JScrollPane(minimalGuaranteeTxt);
 		textPanel.add(sp);
 		
 		textPanel.add(new JLabel("Success Guarantees"));
 		successGuaranteeTxt = new JTextPane();
+		successGuaranteeTxt.setText("maximum flow supplied");
 		sp = new JScrollPane(successGuaranteeTxt);
 		textPanel.add(sp);
 		
