@@ -1,4 +1,4 @@
-package UseCaseEditor;
+
 
 //import UseCaseEditor;
 
@@ -103,41 +103,17 @@ public class GUI extends JFrame implements ActionListener{
 		setSize(835,418);
 		getContentPane().setLayout(null);
 		
-		tree = new JTree();
-		tree.setModel(new DefaultTreeModel(
-			new DefaultMutableTreeNode("Test Tree") {
-				{
-					DefaultMutableTreeNode node_1;
-					node_1 = new DefaultMutableTreeNode("Aliens ");
-						node_1.add(new DefaultMutableTreeNode("blue"));
-						node_1.add(new DefaultMutableTreeNode("violet"));
-						node_1.add(new DefaultMutableTreeNode("red"));
-						node_1.add(new DefaultMutableTreeNode("yellow"));
-					add(node_1);
-					node_1 = new DefaultMutableTreeNode("Kanye West");
-						node_1.add(new DefaultMutableTreeNode("basketball"));
-						node_1.add(new DefaultMutableTreeNode("soccer"));
-						node_1.add(new DefaultMutableTreeNode("football"));
-						node_1.add(new DefaultMutableTreeNode("hockey"));
-					add(node_1);
-					node_1 = new DefaultMutableTreeNode("Spooky skeletons");
-						node_1.add(new DefaultMutableTreeNode("hot dogs"));
-						node_1.add(new DefaultMutableTreeNode("pizza"));
-						node_1.add(new DefaultMutableTreeNode("ravioli"));
-						node_1.add(new DefaultMutableTreeNode("bananas"));
-					add(node_1);
-				}
-			}
-		));
-		tree.setBackground(Color.WHITE);
-		tree.setBounds(0, 0, 144, 358);
-		getContentPane().add(tree);
+
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(143, 11, 611, 336);
 		getContentPane().add(panel);
 		panel.setLayout(null);
+		
+		
+		
+
 		
 		ID_input = new JLabel("Id");
 		ID_input.setBounds(303, 290, 143, 20);
@@ -151,6 +127,8 @@ public class GUI extends JFrame implements ActionListener{
 		ID.setBounds(10, 290, 143, 20);
 		panel.add(ID);
 
+
+		
 		JLabel description = new JLabel();
 		description = new JLabel("Description");
 		description.setBounds(10, 229, 143, 20);
@@ -189,36 +167,69 @@ public class GUI extends JFrame implements ActionListener{
 		name_input.setBounds(303, 11, 143, 20);
 		panel.add(name_input);
 		
-				success_input = new JLabel("Success Guarantee");
-				panel.add(success_input);
-				success_input.setBounds(305, 199, 141, 18);
+		success_input = new JLabel("Success Guarantee");
+		panel.add(success_input);
+		success_input.setBounds(305, 199, 141, 18);
 				
-						minimal_input = new JLabel("Minimal Guarantee");
-						panel.add(minimal_input);
-						minimal_input.setBounds(305, 168, 141, 18);
+		minimal_input = new JLabel("Minimal Guarantee");
+		panel.add(minimal_input);
+		minimal_input.setBounds(305, 168, 141, 18);
 						
-								description_input = new JLabel("Descrption");
-								panel.add(description_input);
-								description_input.setBounds(303, 230, 141, 18);
+		description_input = new JLabel("Descrption");
+		panel.add(description_input);
+		description_input.setBounds(303, 230, 141, 18);
 								
-										prim_actors_input = new JLabel("Primary Actors");
-										panel.add(prim_actors_input);
-										prim_actors_input.setBounds(303, 40, 141, 18);
+		prim_actors_input = new JLabel("Primary Actors");
+		panel.add(prim_actors_input);
+		prim_actors_input.setBounds(303, 40, 141, 18);
 										
-												triggers_input = new JLabel("Triggers");
-												panel.add(triggers_input);
-												triggers_input.setBounds(305, 106, 141, 18);
+		triggers_input = new JLabel("Triggers");
+		panel.add(triggers_input);
+		triggers_input.setBounds(305, 106, 141, 18);
 												
-														preconditions_input = new JLabel("Preconditions");
-														panel.add(preconditions_input);
-														preconditions_input.setBounds(303, 261, 141, 18);
+		preconditions_input = new JLabel("Preconditions");
+		panel.add(preconditions_input);
+		preconditions_input.setBounds(303, 261, 141, 18);
 														
-																primaryFlow_input = new JLabel("Primary Flow");
-																panel.add(primaryFlow_input);
-																primaryFlow_input.setBounds(303, 75, 141, 18);
+		primaryFlow_input = new JLabel("Primary Flow");
+		panel.add(primaryFlow_input);
+		primaryFlow_input.setBounds(303, 75, 141, 18);
 																
-																		alternativeFlow_input = new JLabel("Alternative Flow");
-																		panel.add(alternativeFlow_input);
+		alternativeFlow_input = new JLabel("Alternative Flow");
+		panel.add(alternativeFlow_input);
+		
+		
+		
+		tree = new JTree();
+		tree.setModel(new DefaultTreeModel(
+			new DefaultMutableTreeNode("Test Tree") {
+				{
+					DefaultMutableTreeNode node_1;
+					node_1 = new DefaultMutableTreeNode("Aliens ");
+						node_1.add(new DefaultMutableTreeNode("blue"));
+						node_1.add(new DefaultMutableTreeNode("violet"));
+						node_1.add(new DefaultMutableTreeNode("red"));
+						node_1.add(new DefaultMutableTreeNode("yellow"));
+					add(node_1);
+					node_1 = new DefaultMutableTreeNode("Kanye West");
+						node_1.add(new DefaultMutableTreeNode("basketball"));
+						node_1.add(new DefaultMutableTreeNode("soccer"));
+						node_1.add(new DefaultMutableTreeNode("football"));
+						node_1.add(new DefaultMutableTreeNode("hockey"));
+					add(node_1);
+					node_1 = new DefaultMutableTreeNode("Spooky skeletons");
+						node_1.add(new DefaultMutableTreeNode("hot dogs"));
+						node_1.add(new DefaultMutableTreeNode("pizza"));
+						node_1.add(new DefaultMutableTreeNode("ravioli"));
+						node_1.add(new DefaultMutableTreeNode("bananas"));
+					add(node_1);
+				}
+			}
+		));
+		tree.setBackground(Color.WHITE);
+		tree.setBounds(0, 0, 144, 358);
+		getContentPane().add(tree);
+		
 																		alternativeFlow_input.setBounds(305, 137, 141, 18);
 
 		
