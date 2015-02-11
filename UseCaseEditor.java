@@ -44,6 +44,7 @@ public class UseCaseEditor extends JDialog implements ActionListener{
 		uc.setTriggers(triggersTxt.getText());
 		uc.setPreconditions(preconditionsTxt.getText());
 		uc.setAlternativeflow(alternateFlowTxt.getText());
+		uc.setPrimaryflow(primaryFlowTxt.getText());
 		uc.setMinimalGuarantees(minimalGuaranteeTxt.getText());
 		uc.setSuccessGuarantees(successGuaranteeTxt.getText());
 		return uc;
