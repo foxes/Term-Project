@@ -311,7 +311,7 @@ public class GUI extends JFrame implements ActionListener{
 		   	String path = input.getSelectedFile().getAbsolutePath(); 
 
 
-//			CurrentProject.saveToXML(path, CurrentUseCase);	
+	//		CurrentProject.saveToXML(path, CurrentProject);	
 //		   	CurrentUseCase.saveAsText(path);
 
 			} else if (result == JFileChooser.CANCEL_OPTION) {
