@@ -1,4 +1,11 @@
 # Term-Project
+
+![usecase editor1](https://user-images.githubusercontent.com/10703611/30608725-1d2051d0-9d2e-11e7-983b-96fcc0bc9877.png)
+
+
+![usecase editor 2](https://user-images.githubusercontent.com/10703611/30608740-1fdc492e-9d2e-11e7-940a-f22fe142cc7b.png)
+
+
 Changes - Gabe
 
 UseCase.Java: I didn't really touch UseCase.java
